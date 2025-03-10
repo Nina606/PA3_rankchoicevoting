@@ -95,6 +95,19 @@ public class Election {
         return true;
     }
 
+    /**
+     * Determines which candidate is the top choice on the ballot and gives the
+     * ballot to that candidate.
+     * 
+     * @param newBallot a ballot that is not currently assigned to a candidate
+     */
+    private void assignBallotToCandidate(Ballot newBallot) {
+        int candidateId = newBallot.getTopCandidate();
+        if (!candidates[candidateId].isEliminated()) {
+            candidates[candidateId].addBallot(newBallot);
+        }
+    }
+
     private int getTotalVotes() {
         int total = 0;
         for (Candidate candidate : candidates) {

@@ -16,7 +16,7 @@ public class ElectionTest {
     }
 
     @Test
-    public void testMajorityWinnerFirstRound() {
+    public void testMutipleCandidateFirstRound() {
         Election election = new Election(3);
         election.addCandidate("Math");
         election.addCandidate("English");
