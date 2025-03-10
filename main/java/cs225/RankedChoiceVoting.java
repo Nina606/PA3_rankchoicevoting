@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+//Nina
+//Do it by myself
 
 /**
  * The ranked choice voting program implements the ranked choice voting
