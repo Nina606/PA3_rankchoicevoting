@@ -22,12 +22,12 @@ public class ElectionTest {
         election.addCandidate("English");
         election.addCandidate("Chinese");
 
-        election.addBallot(new int[] { 1, 2, 3 }); // Math first choice
-        election.addBallot(new int[] { 1, 3, 2 }); // Math first choice
-        election.addBallot(new int[] { 2, 1, 3 }); // English first choice
-        election.addBallot(new int[] { 2, 3, 1 }); // English first choice
-        election.addBallot(new int[] { 3, 1, 2 }); // Chinese first choice
-        election.addBallot(new int[] { 1, 2, 3 }); // Additional ballot for Math
+        election.addBallot(new int[] { 1, 2, 3 });
+        election.addBallot(new int[] { 1, 3, 2 });
+        election.addBallot(new int[] { 2, 1, 3 });
+        election.addBallot(new int[] { 2, 3, 1 });
+        election.addBallot(new int[] { 3, 1, 2 });
+        election.addBallot(new int[] { 1, 2, 3 });
 
         List<String> winner = election.selectWinner();
         assertEquals(Arrays.asList("Math"), winner);
@@ -41,12 +41,12 @@ public class ElectionTest {
         election.addCandidate("Molly");
         election.addCandidate("Flora");
 
-        election.addBallot(new int[] { 1, 2, 3, 4 }); // Nina first choice
-        election.addBallot(new int[] { 1, 3, 2, 4 }); // Nina first choice
-        election.addBallot(new int[] { 3, 1, 4, 2 }); // Gao first choice
-        election.addBallot(new int[] { 4, 2, 1, 3 }); // Gao first choice
-        election.addBallot(new int[] { 4, 1, 3, 2 }); // Molly first choice
-        election.addBallot(new int[] { 1, 2, 3, 4 }); // Additional ballot for Nina
+        election.addBallot(new int[] { 1, 2, 3, 4 });
+        election.addBallot(new int[] { 1, 3, 2, 4 });
+        election.addBallot(new int[] { 3, 1, 4, 2 });
+        election.addBallot(new int[] { 4, 2, 1, 3 });
+        election.addBallot(new int[] { 4, 1, 3, 2 });
+        election.addBallot(new int[] { 1, 2, 3, 4 });
 
         List<String> winner = election.selectWinner();
         assertEquals(Arrays.asList("Nina"), winner);
@@ -59,11 +59,11 @@ public class ElectionTest {
         election.addCandidate("Gao");
         election.addCandidate("Molly");
 
-        election.addBallot(new int[] { 1, 2, 3 }); // Nina first choice
-        election.addBallot(new int[] { 2, 3, 1 }); // Gao first choice
-        election.addBallot(new int[] { 3, 1, 2 }); // Molly first choice
-        election.addBallot(new int[] { 3, 2, 1 }); // Molly first choice
-        election.addBallot(new int[] { 2, 1, 3 }); // Additional vote for Gao
+        election.addBallot(new int[] { 1, 2, 3 });
+        election.addBallot(new int[] { 2, 3, 1 });
+        election.addBallot(new int[] { 3, 1, 2 });
+        election.addBallot(new int[] { 3, 2, 1 });
+        election.addBallot(new int[] { 2, 1, 3 });
 
         List<String> winner = election.selectWinner();
         assertTrue(winner.contains("Molly") && winner.contains("Gao")); //

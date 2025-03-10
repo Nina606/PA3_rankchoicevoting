@@ -58,12 +58,9 @@ public class Election {
      * 
      * @param ranks A correctly formulated ballot will have exactly 1
      *              entry with a rank of 1, exactly one entry with a rank of 2, etc.
-     *              If
-     *              there are n candidates on the ballot, the values in the rank
-     *              array
-     *              passed to the constructor will be some permutation of the
-     *              numbers 1 to
-     *              n.
+     *              If there are n candidates on the ballot, the values in the rank
+     *              array passed to the constructor will be some permutation of the
+     *              numbers 1 to n.
      * @throws IllegalArgumentException if the ballot is not valid.
      */
     public void addBallot(int[] ranks) {
@@ -108,6 +105,11 @@ public class Election {
         }
     }
 
+    /**
+     * Calculates the total number of votes for all non-eliminated candidates.
+     * 
+     * @return the total number of votes currently in the election
+     */
     private int getTotalVotes() {
         int total = 0;
         for (Candidate candidate : candidates) {
@@ -118,6 +120,11 @@ public class Election {
         return total;
     }
 
+    /**
+     * Counts the number of candidates who have not been eliminated.
+     * 
+     * @return the number of remaining candidates in the election
+     */
     private int getRemainingCandidates() {
         int count = 0;
         for (Candidate candidate : candidates) {
@@ -174,7 +181,7 @@ public class Election {
                 return tiedCandidates;
             }
 
-            // Eliminate the candidate(s) with the fewest votes and redistribute ballots
+            // Eliminate the candidates with the fewest votes and redistribute ballots
             for (Candidate candidate : toEliminate) {
                 List<Ballot> redistributedBallots = candidate.eliminate();
                 for (Ballot ballot : redistributedBallots) {
