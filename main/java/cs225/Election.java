@@ -148,9 +148,7 @@ public class Election {
             // Check if a candidate has majority votes
             for (Candidate candidate : candidates) {
                 if (!candidate.isEliminated() && candidate.getVotes() > getTotalVotes() / 2) {
-                    List<String> winner = new ArrayList<>();
-                    winner.add(candidate.getName());
-                    return winner;
+                    return Arrays.asList(candidate.getName());
                 }
             }
 
@@ -172,13 +170,7 @@ public class Election {
 
             // If all remaining candidates have the same votes, it's a tie
             if (toEliminate.size() == getRemainingCandidates()) {
-                List<String> tiedCandidates = new ArrayList<>();
-                for (Candidate candidate : candidates) {
-                    if (!candidate.isEliminated()) {
-                        tiedCandidates.add(candidate.getName());
-                    }
-                }
-                return tiedCandidates;
+                return toEliminate.stream().map(Candidate::getName).toList();
             }
 
             // Eliminate the candidates with the fewest votes and redistribute ballots
