@@ -117,6 +117,7 @@ public class Election {
                 total += candidate.getVotes();
             }
         }
+        System.out.println("Total votes: " + total);
         return total;
     }
 

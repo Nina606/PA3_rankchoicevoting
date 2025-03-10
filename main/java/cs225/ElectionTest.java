@@ -143,4 +143,35 @@ public class ElectionTest {
         List<String> winner = election.selectWinner();
         assertFalse(winner.isEmpty());
     }
+
+    @Test
+    public void testInvalidBallotRejected() {
+        Election election = new Election(3);
+        election.addCandidate("Nina");
+        election.addCandidate("Gao");
+        election.addCandidate("Molly");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            election.addBallot(new int[] { 1, 1, 3 }); // Invalid ballot
+        });
+        assertEquals("Invalid ballot", exception.getMessage());
+    }
+
+    @Test
+    public void testWinnerAfterTwoRounds() {
+        Election election = new Election(3);
+        election.addCandidate("Nina");
+        election.addCandidate("Gao");
+        election.addCandidate("Molly");
+
+        election.addBallot(new int[] { 1, 2, 3 }); // Nina first choice
+        election.addBallot(new int[] { 2, 3, 1 }); // Gao first choice
+        election.addBallot(new int[] { 3, 1, 2 }); // Molly first choice
+        election.addBallot(new int[] { 3, 2, 1 }); // Molly first choice
+        election.addBallot(new int[] { 2, 1, 3 }); // Additional vote for Gao
+        election.addBallot(new int[] { 1, 3, 2 }); // Additional vote for Nina
+
+        List<String> winner = election.selectWinner();
+        assertEquals(Arrays.asList("Nina", "Gao", "Molly"), winner);
+    }
 }
